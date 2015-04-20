@@ -1,0 +1,4 @@
+OpenWeatherMap: {APPID: 'b958779bc9d4571103c9b281e099cf81' }
+Flickr: {Key:  '67d31f405bc0c1679031fa0dd36c0d6f' }
+
+
