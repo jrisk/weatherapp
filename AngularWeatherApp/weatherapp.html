@@ -16,7 +16,7 @@ Search Your City: <input ng-model="query">
 <h1><a id="temp" href="#" onClick="switchUnits();
 return false;" title="Click to switch between Fahrenheit and Celcius"><a></h1>
 <h2 id="localweather" class="local">{{reports.name}}</h2>
-<h2 ngClick="degrees()">{{reports.main.temp - 273.15 | number:0}} C°</h2>
+<h2 ngClick="degrees()">{{reports.main.temp - 273.15 | number:0}}</h2><p id="tempsign"></p>
 </section>
 <footer>
 <p>Powered using <a href="http://openweathermap.org">OpenWeatherMap API</a></p>
