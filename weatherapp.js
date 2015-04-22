@@ -8,11 +8,11 @@ units: "C"
 
 function switchUnits() {
 	if (weatherData.units == "C") {
-		weatherData.temperatureValue = (weatherData.temperatureValue * 9/5 + 32);
+		weatherData.temperatureValue = Math.round(weatherData.temperatureValue * 9/5 + 32);
 			weatherData.units = "F";
 		}
 	else {
-		weatherData.temperatureValue = ((weatherData.temperatureValue - 32) *
+		weatherData.temperatureValue = Math.round((weatherData.temperatureValue - 32) *
 		5/9);
 			weatherData.units = "C";
 		}
@@ -44,7 +44,7 @@ if (window.XMLHttpRequest) {
 	
 	weatherData.city.innerHTML = cityName;
 	
-	var TempC = (cityTemp - 273.15);
+	var TempC = Math.round(cityTemp - 273.15);
 	weatherData.temperature.innerHTML = TempC + "C";
 	weatherData.temperatureValue = TempC;
 	}, false);
@@ -64,4 +64,4 @@ if (window.XMLHttpRequest) {
 	}
 }
 
-window.onload = getLocationAndWeather;
+getLocationAndWeather();
