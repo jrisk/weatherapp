@@ -3,18 +3,18 @@ city: document.querySelector("#city"),
 weather: document.querySelector("#weather"),
 temperature: document.querySelector("#temp"),
 temperatureValue: 0,
-units: "C"
+units: "°F"
 }
 
 function switchUnits() {
-	if (weatherData.units == "C") {
+	if (weatherData.units == "°C") {
 		weatherData.temperatureValue = Math.round(weatherData.temperatureValue * 9/5 + 32);
-			weatherData.units = "F";
+			weatherData.units = "°F";
 		}
 	else {
 		weatherData.temperatureValue = Math.round((weatherData.temperatureValue - 32) *
 		5/9);
-			weatherData.units = "C";
+			weatherData.units = "°C";
 		}
 		
 	weatherData.temperature.innerHTML = weatherData.temperatureValue +
@@ -44,8 +44,8 @@ if (window.XMLHttpRequest) {
 	
 	weatherData.city.innerHTML = cityName;
 	
-	var TempC = Math.round(cityTemp - 273.15);
-	weatherData.temperature.innerHTML = TempC + "C";
+	var TempC = Math.round((cityTemp - 273.15) * 9/5 + 32);
+	weatherData.temperature.innerHTML = TempC + "°F";
 	weatherData.temperatureValue = TempC;
 	}, false);
 	
