@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="app/js/controllers.js"></script>
 </head>
 
 <body ng-controller="weatherController">
@@ -14,13 +15,12 @@ Search Your City: <input ng-model="query">
 <h1 id="city">Weather App City</h1>
 <h1><a id="temp" href="#" onClick="switchUnits();
 return false;" title="Click to switch between Fahrenheit and Celcius"><a></h1>
-<h2 id="localweather" class="local">Your local weather</p>
-<p ng-repeater="report in reports | filter: query"></p>
+<h2 id="localweather" class="local">{{reports.name}}</h2>
+<h2 ngClick="degrees()">{{reports.main.temp - 273.15 | number:0}} C°</h2>
 </section>
 <footer>
 <p>Powered using <a href="http://openweathermap.org">OpenWeatherMap API</a></p>
 <p>Made by <a href="http://riskvb.com">Joe Risk</a></p>
 Based on Tutorial from <a href="https://fourtonfish.makes.org/thimble/make-your-own-web-mashup-introduction-to-web-apis">Fourtonfish</a></p>
-<script src="weatherapp.js"></script>
 </body>
 </html>
