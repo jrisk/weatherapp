@@ -5,7 +5,6 @@ margin: 0;
 padding: 0;
 font-family: Arial, sans-serif;
 font-size: 3em;
-text-shadow: 0 0 10px #000;
 background: #999;
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -37,4 +36,12 @@ position: absolute;
 #temp {
 text-decoration: none;
 border-bottom: 0.01em dotted white;
+}
+
+#local {
+display: none;
+}
+
+#zip {
+display: none;
 }

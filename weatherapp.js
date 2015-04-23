@@ -55,7 +55,7 @@ if (window.XMLHttpRequest) {
 	alert("Could not complete request") 
 	}, false);
 	
-	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Virginia%20Beach,VA", true);
+	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Virginia%20Beach,VA", "APPID=b958779bc9d4571103c9b281e099cf81", true);
 	xhr.send();
 	}
 	
@@ -65,3 +65,11 @@ if (window.XMLHttpRequest) {
 }
 
 getLocationAndWeather();
+
+$(function() {
+$('#city').hide().fadeIn(2000);
+$('#temp').hide().fadeIn(3000, function() {
+$('#local').hide().fadeIn(2000);
+$('#zip').fadeIn(2000);
+});
+});

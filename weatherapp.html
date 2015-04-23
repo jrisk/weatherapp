@@ -3,22 +3,39 @@
 <head>
 <meta charset="utf-8">
 <title>Weather App and Testing 1.0</title>
+<link rel="stylesheet" href="weatherapp.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </head>
 
 <body>
-<div class="jumbotron">
+<div class="container">
+<div class="well">
+<div class="row">
+<div class="col-sm-6">
 <h1 id="city">Weather App City</h1>
 <h1><a id="temp" href="#" onClick="switchUnits();
 return false;" title="Click to switch between Fahrenheit and Celcius"><a></h1>
-<p>Your local weather</p>
 </div>
-<footer>
+<div class="col-sm-6">
+<h1 id="local">Local weather</h1>
+<h2 id="zip"><input type="text" placeholder="put your zipcode"></input></h2>
+
+</div>
+</div>
+</div>
+</div>
+<div class="well">
+<div class="row">
+<div class="col-xs-12">
 <p>Powered using <a href="http://openweathermap.org">OpenWeatherMap API</a></p>
 <p>Made by <a href="http://riskvb.com">Joe Risk</a></p>
 Based on Tutorial from <a href="https://fourtonfish.makes.org/thimble/make-your-own-web-mashup-introduction-to-web-apis">Fourtonfish</a></p>
 <script src="weatherapp.js"></script>
+</div>
+</div>
+</div>
 </body>
 </html>
