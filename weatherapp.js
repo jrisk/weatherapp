@@ -70,10 +70,11 @@ $(function() {
 $('#zipweather').hide();
 $('#zipsubmit').hide();
 $('#city').hide().fadeIn(2000);
-$('#temp').hide().fadeIn(3000);
+$('#temp').hide().fadeIn(2000, function() {
 $('#local').hide().fadeIn(2000, function() {
-$('#zipweather').fadeIn(2000, function() {
-$('#zipsubmit').fadeIn(2000);
+$('#zipweather').fadeIn(1000, function() {
+$('#zipsubmit').fadeIn(1000);
+});
 });
 });
 });
@@ -92,6 +93,23 @@ if (window.XMLHttpRequest) {
 	var localTemp = response.main.temp;
 	
 	console.log(localCity, localTemp);
+	
+	//DOM creation practice, can only be used on 1 submit
+	
+	var newlocal = document.createElement("h1");
+	var newtemp = document.createElement("h1");
+	var child = document.getElementById("childnode");
+	var parent = document.getElementById("parentnode");
+	
+	newlocal.innerHTML = localCity;
+	newtemp.innerHTML = localTemp;
+	
+	parent.insertBefore(newlocal, child);
+	parent.insertBefore(newtemp, child);
+	
+	
+	$('#zipweather').hide();
+	$('#zipsubmit').hide();
 	
 	}, false);
 	
