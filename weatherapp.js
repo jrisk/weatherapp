@@ -2,8 +2,12 @@ var weatherData = {
 city: document.querySelector("#city"),
 weather: document.querySelector("#weather"),
 temperature: document.querySelector("#temp"),
+cityLocal: document.querySelector("#local"),
+tempLocal: document.querySelector("#localtemp"),
 temperatureValue: 0,
-units: "°F"
+temperatureValueLocal: 0,
+units: "°F",
+unitsLocal: "°F"
 }
 
 function switchUnits() {
@@ -21,6 +25,7 @@ function switchUnits() {
 	weatherData.units;
 	}
 	
+// onload request function for static VB weather
 function getLocationAndWeather() {
 if (window.XMLHttpRequest) {
 	var xhr = new XMLHttpRequest();
@@ -79,6 +84,21 @@ $('#zipsubmit').fadeIn(1000);
 });
 });
 
+function switchUnitsLocal() {
+	if (weatherData.unitsLocal == "°C") {
+		weatherData.temperatureValueLocal = Math.round(weatherData.temperatureValueLocal * 9/5 + 32);
+			weatherData.unitsLocal = "°F";
+		}
+	else {
+		weatherData.temperatureValueLocal = Math.round((weatherData.temperatureValueLocal - 32) *
+		5/9);
+			weatherData.unitsLocal = "°C";
+		}
+		
+	weatherData.tempLocal.innerHTML = weatherData.temperatureValueLocal +
+	weatherData.unitsLocal;
+	}
+
 function zipWeather() {
 if (window.XMLHttpRequest) {
 	var xhr = new XMLHttpRequest();
@@ -94,10 +114,17 @@ if (window.XMLHttpRequest) {
 	
 	console.log(localCity, localTemp);
 	
-	//DOM creation practice, can only be used on 1 submit
+	weatherData.cityLocal.innerHTML = localCity;
+	
+	var TempC = Math.round((localTemp - 273.15) * 9/5 + 32);
+	weatherData.tempLocal.innerHTML = TempC + "°F";
+	weatherData.temperatureValueLocal = TempC;
+	
+	/*DOM creation practice, can only be used on 1 submit
 	
 	var newlocal = document.createElement("h1");
 	var newtemp = document.createElement("h1");
+	
 	var child = document.getElementById("childnode");
 	var parent = document.getElementById("parentnode");
 	
@@ -107,9 +134,9 @@ if (window.XMLHttpRequest) {
 	parent.insertBefore(newlocal, child);
 	parent.insertBefore(newtemp, child);
 	
-	
 	$('#zipweather').hide();
 	$('#zipsubmit').hide();
+	*/
 	
 	}, false);
 	

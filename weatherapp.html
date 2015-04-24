@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Weather App and Testing 1.0</title>
+<title>Weather App and Testing 1.1</title>
 <link rel="stylesheet" href="weatherapp.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -20,7 +20,8 @@
 return false;" title="Click to switch between Fahrenheit and Celcius"><a></h1>
 </div>
 <div class="col-sm-6" id="parentnode">
-<h2 id="local">Check Your Local Weather</h2>
+<h1 id="local">Check Your Local Weather</h1>
+<h1><a id="localtemp" onClick="switchUnitsLocal(); return false" title="Click to switch between Fahrenheit and Celcius"></a></h1>
 <h2 id="childnode"><input type="text" id="zipweather" name="zip" placeholder="Enter Zipcode"></h2>
 <h2><input id="zipsubmit" type="submit" onClick="zipWeather()"></h2>
 </div>
