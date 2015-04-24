@@ -67,9 +67,48 @@ if (window.XMLHttpRequest) {
 getLocationAndWeather();
 
 $(function() {
+$('#zipweather').hide();
+$('#zipsubmit').hide();
 $('#city').hide().fadeIn(2000);
-$('#temp').hide().fadeIn(3000, function() {
-$('#local').hide().fadeIn(2000);
-$('#zip').fadeIn(2000);
+$('#temp').hide().fadeIn(3000);
+$('#local').hide().fadeIn(2000, function() {
+$('#zipweather').fadeIn(2000, function() {
+$('#zipsubmit').fadeIn(2000);
 });
 });
+});
+
+function zipWeather() {
+if (window.XMLHttpRequest) {
+	var xhr = new XMLHttpRequest();
+	
+	xhr.addEventListener("load", function() {
+	
+	var response = JSON.parse(xhr.responseText);
+	
+	console.log(response);
+	
+	var localCity = response.name;
+	var localTemp = response.main.temp;
+	
+	console.log(localCity, localTemp);
+	
+	}, false);
+	
+	xhr.addEventListener("error", function(err) {
+	console.log(err);
+	}, false);
+	
+	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + document.getElementById("zipweather").value, 
+	"APPID=b958779bc9d4571103c9b281e099cf81", true);
+	
+	xhr.send();
+	}
+	
+	else {
+		console.log("request didn't send");
+		}
+	}
+
+
+
