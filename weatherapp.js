@@ -29,6 +29,11 @@ function switchUnits() {
 function getLocationAndWeather() {
 if (window.XMLHttpRequest) {
 	var xhr = new XMLHttpRequest();
+	}
+else {
+	
+	var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
 	
 	xhr.addEventListener("load", function() {
 	var response = JSON.parse(xhr.responseText)
@@ -62,11 +67,6 @@ if (window.XMLHttpRequest) {
 	
 	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Virginia%20Beach,VA", "APPID=b958779bc9d4571103c9b281e099cf81", true);
 	xhr.send();
-	}
-	
-	else{
-		alert("Unable to fetch location and weather data");
-	}
 }
 
 getLocationAndWeather();
@@ -102,6 +102,11 @@ function switchUnitsLocal() {
 function zipWeather() {
 if (window.XMLHttpRequest) {
 	var xhr = new XMLHttpRequest();
+	}
+else {
+	
+	var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
 	
 	xhr.addEventListener("load", function() {
 	
@@ -148,12 +153,7 @@ if (window.XMLHttpRequest) {
 	"APPID=b958779bc9d4571103c9b281e099cf81", true);
 	
 	xhr.send();
-	}
-	
-	else {
-		console.log("request didn't send");
-		}
-	}
+}
 
 
 
