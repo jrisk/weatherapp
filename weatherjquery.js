@@ -1,13 +1,8 @@
 var weatherData = {
-city: document.querySelector("#city"),
-weather: document.querySelector("#weather"),
-temperature: document.querySelector("#temp"),
-cityLocal: document.querySelector("#local"),
-tempLocal: document.querySelector("#localtemp"),
 temperatureValue: 0,
-temperatureValueLocal: 0,
+localTemperatureValue: 0,
 units: "°F",
-unitsLocal: "°F"
+localUnits: "°F"
 }
 
 $.ajax({
@@ -18,7 +13,7 @@ data: {},
 dataType: 'json',
 success: function (data) {
 console.log(data);
-$('#weather').html(data.name);
+$('#city').html(data.name);
 // javascript style
 var tempF = Math.round((data.main.temp - 273.15) * 9/5 + 32);
 $('#temp').html(tempF + '°F');
@@ -38,4 +33,44 @@ function switchUnits() {
 		
 	$('#temp').html(weatherData.temperatureValue + weatherData.units);
 	}
+	
+function zipWeatherKey(event) {
+if (event.which == 13 || event.keyCode == 13) {
+	zipWeather()
+	}
+else {
+	return false
+}
+}
+
+function zipWeather() {
+$.ajax({
+type: 'GET',
+url: 'http://api.openweathermap.org/data/2.5/weather?q=' + $("#zipweather").val(),
+APPID: 'b958779bc9d4571103c9b281e099cf81',
+data: {},
+dataType: 'json',
+success: function(data) {
+console.log(data.name);
+$('#weather').html(data.name);
+//change from kelvin
+var localTempF = Math.round((data.main.temp - 273.15) * 9/5 + 32);
+$('#localtemp').html(localTempF + weatherData.localUnits);
+weatherData.localTemperatureValue = localTempF;
+}
+});
+};
+
+function switchUnitsLocal() {
+if (weatherData.localUnits === "°F") {
+	weatherData.localTemperatureValue = Math.round((weatherData.localTemperatureValue - 32) * 5/9);
+	weatherData.localUnits = "°C";
+	}
+else {
+	weatherData.localTemperatureValue = Math.round(weatherData.localTemperatureValue * 9/5 + 32);
+	weatherData.localUnits = "°F";
+	}
+$('#localtemp').html(weatherData.localTemperatureValue + weatherData.localUnits);
+}
+
 
