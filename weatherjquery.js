@@ -18,7 +18,20 @@ $('#city').html(data.name);
 var tempF = Math.round((data.main.temp - 273.15) * 9/5 + 32);
 $('#temp').html(tempF + '°F');
 weatherData.temperatureValue = tempF;
-}});
+},
+timeout: 3000,
+retryCount: 0,
+retryLimit: 5,
+error: function(jqXHR, textStatus, errorThrown) { 
+this.retryCount++;
+	if (this.retryCount <= this.retryLimit) {
+	//try again
+	$.ajax(this);
+	return;
+	};
+return;
+}
+});
 
 function switchUnits() {
 	if (weatherData.units == "°C") {
@@ -57,6 +70,18 @@ $('#weather').html(data.name);
 var localTempF = Math.round((data.main.temp - 273.15) * 9/5 + 32);
 $('#localtemp').html(localTempF + weatherData.localUnits);
 weatherData.localTemperatureValue = localTempF;
+},
+timeout: 3000,
+retryCount: 0,
+retryLimit: 5,
+error: function(jqXHR, textStatus, errorThrown) { 
+this.retryCount++;
+	if (this.retryCount <= this.retryLimit) {
+	//try again
+	$.ajax(this);
+	return;
+	}
+return;
 }
 });
 };
