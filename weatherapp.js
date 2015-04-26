@@ -10,6 +10,15 @@ units: "°F",
 unitsLocal: "°F"
 }
 
+function zipWeatherKey(event) {
+if (event.which == 13 || event.keyCode == 13) {
+	zipWeather()
+	}
+else {
+	return false
+}
+}
+
 function switchUnits() {
 	if (weatherData.units == "°C") {
 		weatherData.temperatureValue = Math.round(weatherData.temperatureValue * 9/5 + 32);
@@ -106,7 +115,7 @@ else {
 	
 	console.log(localCity, localTemp);
 	
-	weatherData.cityLocal.innerHTML = localCity;
+	weatherData.weather.innerHTML = localCity;
 	
 	var TempC = Math.round((localTemp - 273.15) * 9/5 + 32);
 	weatherData.tempLocal.innerHTML = TempC + "°F";
