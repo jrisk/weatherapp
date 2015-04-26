@@ -104,6 +104,46 @@ function switchUnitsLocal() {
 	weatherData.tempLocal.innerHTML = weatherData.temperatureValueLocal +
 	weatherData.unitsLocal;
 	}
+	
+/*	
+function zipWeather() {
+if (window.XMLHttpRequest) {
+var xhr = new XMLHttpRequest();
+}
+else {
+var xhr = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+xhr.onreadystatechange = function() {
+if (xhr.readyState == 4 && xhr.status == 200) {
+var response = JSON.parse(xhr.responseText);
+var city = response.name;
+weatherData.cityLocal.innerHTML = city;
+}
+else if (xhr.readyState == 3) {
+console.log("server request is being processed");
+}
+else if (xhr.readyState == 2) {
+console.log("server request recieved");
+}
+else if (xhr.readyState == 1) {
+console.log("server connection established");
+}
+else {
+console.log("request failed, retrying in 5 seconds...");
+window.setTimeout(zipWeather, 5000);
+return;
+}
+}
+xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + document.getElementById("zipweather").value,
+true);
+
+xhr.send();	
+}
+*/
+	
+	
+	
 
 function zipWeather() {
 if (window.XMLHttpRequest) {
@@ -144,10 +184,11 @@ else {
 	
 	parent.insertBefore(newlocal, child);
 	parent.insertBefore(newtemp, child);
+	*/
 	
 	$('#zipweather').hide();
 	$('#zipsubmit').hide();
-	*/
+	//
 	
 	}, false);
 	
