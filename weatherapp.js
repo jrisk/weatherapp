@@ -7,7 +7,10 @@ tempLocal: document.querySelector("#localtemp"),
 temperatureValue: 0,
 temperatureValueLocal: 0,
 units: "°F",
-unitsLocal: "°F"
+unitsLocal: "°F",
+//vars to recall weather api incase of error
+retryCount: 0,
+retryMax: 4
 }
 
 function zipWeatherKey(event) {
@@ -68,10 +71,17 @@ else {
 	weatherData.temperatureValue = TempC;
 	}, false);
 	
-	
-	
 	xhr.addEventListener("error", function(err) {
-	alert("Could not complete request") 
+	console.log(err);
+	if (weatherData.retryCount <= weatherData.retryMax) {
+	weatherData.retryCount++;
+	console.log(weatherData.retryCount);
+	getLocationAndWeather();
+	return;
+		}
+	else {
+	return;
+	}
 	}, false);
 	
 	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Virginia%20Beach,VA", "APPID=b958779bc9d4571103c9b281e099cf81", true);
@@ -141,8 +151,19 @@ else {
 	
 	}, false);
 	
+	
 	xhr.addEventListener("error", function(err) {
 	console.log(err);
+	if (weatherData.retryCount <= weatherData.retryMax) {
+		weatherData.retryCount++;
+		zipWeather();
+		console.log(weatherData.retryCount);
+		return;
+		}
+	else {
+	return;
+	};
+	
 	}, false);
 	
 	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + document.getElementById("zipweather").value, true);
