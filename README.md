@@ -1,4 +1,3 @@
-# weatherapp
 <h1>Simple Weather App in Jquery</h1>
 <h2>Type in any zipcode in the world and get the weather in Fahrenheit. Click on temperature to change to Celcius.</h2>
 </h2>Works on Firefox, Chrome, Safari, and Opera.</h2>
