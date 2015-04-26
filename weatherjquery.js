@@ -8,7 +8,6 @@ localUnits: "°F"
 $.ajax({
 type: 'GET',
 url: 'http://api.openweathermap.org/data/2.5/weather?q=Virginia%20Beach,VA',
-APPID: 'b958779bc9d4571103c9b281e099cf81',
 data: {},
 dataType: 'json',
 success: function (data) {
@@ -60,12 +59,11 @@ function zipWeather() {
 $.ajax({
 type: 'GET',
 url: 'http://api.openweathermap.org/data/2.5/weather?q=' + $("#zipweather").val(),
-APPID: 'b958779bc9d4571103c9b281e099cf81',
 data: {},
 dataType: 'json',
 success: function(data) {
 console.log(data.name);
-$('#weather').html(data.name);
+$('#weather').html(data.name).css({'color': 'blue', 'text-shadow': '1px 0.5px lightblue'});
 //change from kelvin
 var localTempF = Math.round((data.main.temp - 273.15) * 9/5 + 32);
 $('#localtemp').html(localTempF + weatherData.localUnits);
@@ -97,5 +95,13 @@ else {
 	}
 $('#localtemp').html(weatherData.localTemperatureValue + weatherData.localUnits);
 }
+
+$(function() {
+$('#local').fadeIn(2000);
+$('#zipweather').hide();
+$('#city').hide().fadeIn(2000);
+$('#temp').hide().fadeIn(2000);
+$('#zipweather').fadeIn(1000);
+});
 
 

@@ -71,19 +71,6 @@ else {
 
 getLocationAndWeather();
 
-$(function() {
-$('#zipweather').hide();
-$('#zipsubmit').hide();
-$('#city').hide().fadeIn(2000);
-$('#temp').hide().fadeIn(2000, function() {
-$('#local').hide().fadeIn(2000, function() {
-$('#zipweather').fadeIn(1000, function() {
-$('#zipsubmit').fadeIn(1000);
-});
-});
-});
-});
-
 function switchUnitsLocal() {
 	if (weatherData.unitsLocal == "°C") {
 		weatherData.temperatureValueLocal = Math.round(weatherData.temperatureValueLocal * 9/5 + 32);
@@ -149,8 +136,7 @@ else {
 	console.log(err);
 	}, false);
 	
-	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + document.getElementById("zipweather").value, 
-	"APPID=b958779bc9d4571103c9b281e099cf81", true);
+	xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=" + document.getElementById("zipweather").value, true);
 	
 	xhr.send();
 }

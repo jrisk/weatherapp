@@ -38,10 +38,9 @@ text-decoration: none;
 border-bottom: 0.01em dotted white;
 }
 
-#local {
-display: none;
+#local:hover {
+text-decoration: none;
 }
 
 #zip {
-display: none;
 }
